@@ -53,9 +53,8 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
             ) {
                 StartScreen(
                     onButtonClicked = {
-                        navController.navigate(route = Routes.Flavor.name)
-//                        println("You ordered $it Cupcakes")
                         orderViewModel.setQuantity(it)
+                        navController.navigate(route = Routes.Flavor.name)
                     }
                 )
             }
@@ -67,14 +66,17 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
                 FlavorScreen(
                     subTotal = orderViewModel.uiState.value.price,
                     options = DataSource.flavors.map { id -> context.resources.getString(id) },
-                    onSelectChanged = { orderViewModel.setFlavor(it) }
+                    onNextClicked = {
+                        orderViewModel.setFlavor(it)
+                        navController.navigate(route = Routes.Pickup.name)
+                    },
+                    onBack = { /*TODO*/ }
                 )
             }
             // navigate to Pickup scree
             composable(
                 route = Routes.Pickup.name
             ) {
-                val context = LocalContext.current
                 PickupScreen(
                     subTotal = orderViewModel.uiState.value.price,
                     options = orderViewModel.uiState.value.pickupOptions,

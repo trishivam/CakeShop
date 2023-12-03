@@ -28,7 +28,8 @@ import com.example.cakeshop.R
 fun FlavorScreen(
     subTotal: String,
     options: List<String>,
-    onSelectChanged: (String)-> Unit,
+    onNextClicked: (String) -> Unit,
+    onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedValue by remember { mutableStateOf("") }
@@ -47,15 +48,14 @@ fun FlavorScreen(
                         selected = selectedValue == item,
                         onClick = {
                             selectedValue = item
-                            onSelectChanged(item)
                         }
-                    )
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = selectedValue == item,
                         onClick = {
                             selectedValue = item
-                            onSelectChanged(item)
                         })
                     Text(item)
                 }
@@ -71,17 +71,17 @@ fun FlavorScreen(
                     .align(Alignment.End)
             )
         }
-        Row (
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
                 .weight(1f, false),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.Bottom
-        ){
+        ) {
             OutlinedButton(
                 modifier = Modifier.weight(1f),
-                onClick = {  }
+                onClick = { onBack() }
             )
             {
                 Text(text = "Cancel")
@@ -89,8 +89,7 @@ fun FlavorScreen(
             Button(
                 modifier = Modifier.weight(1f),
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { onSelectChanged(selectedValue) }
-
+                onClick = { onNextClicked(selectedValue) }
             ) {
                 Text( text = "Next" )
             }

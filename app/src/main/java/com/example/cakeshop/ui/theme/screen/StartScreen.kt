@@ -27,7 +27,6 @@ fun StartScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-
         Image(
             painter = painterResource(R.drawable.pexels_jess_bailey_designs_913136),
             contentDescription = "Jelly Cake",
@@ -46,25 +45,21 @@ fun StartScreen(
         Button(
             modifier = Modifier.padding(10.dp),
             onClick = { onButtonClicked(1) },
-
         ) {
             Text(text = stringResource(R.string.oneCupcake) )
         }
         Button(
             modifier = Modifier.padding(10.dp),
-
             onClick = { onButtonClicked(6) }
         ) {
-            Text(text = "Six Cakecup")
+            Text(text = stringResource(R.string.six_cupcake))
         }
         Button(
-
+            modifier = Modifier.padding(10.dp),
             onClick = { onButtonClicked(12) }
         ) {
-            Text(text = "Twelve Cakecup")
+            Text(text = stringResource(R.string.twelve_cupcake))
         }
-
-
     }
 
 }

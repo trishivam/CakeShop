@@ -17,5 +17,7 @@
     <string name="quantity">Quantity</string>
     <string name="flavor">Flavor</string>
     <string name="date">Date</string>
+    <string name="six_cupcake">Six Cupcake</string>
+    <string name="twelve_cupcake">Twelve Cupcake</string>
     <plurals name="cupcake">""</plurals>
 </resources>

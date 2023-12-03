@@ -12,15 +12,12 @@ import java.util.Calendar
 private const val PRICE_PER_CUPCAKE = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP = 3.00
 
-
 fun <T> MutableState<T>.update(updateBlock: (T) -> T) {
     val updatedState = updateBlock(this.value)
     this.value = updatedState
 }
         
 class OrderViewModel : ViewModel() {
-//    private val _uiState = MutableStateFlow(OrderUiState(pickupOptions = pickupOptions()))
-//    val uiState: StateFlow<OrderUiState> = _uiState.asStateFlow()
     val uiState = mutableStateOf(OrderUiState(pickupOptions = pickupOptions()))
 
     fun setQuantity(numberOfCupcakes: Int) {

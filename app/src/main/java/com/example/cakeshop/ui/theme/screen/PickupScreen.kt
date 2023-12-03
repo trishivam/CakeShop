@@ -23,12 +23,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.cakeshop.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PickupScreen(
     subTotal: String,
     options: List<String>,
-    onSelectChanged: (String)-> Unit,
+    onSelectChanged: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedValue by remember { mutableStateOf("") }
@@ -49,7 +48,8 @@ fun PickupScreen(
                             selectedValue = item
                             onSelectChanged(item)
                         }
-                    )
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = selectedValue == item,
