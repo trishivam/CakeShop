@@ -25,14 +25,14 @@ import com.example.cakeshop.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FlavorScreen(
+fun PickupScreen(
     subTotal: String,
     options: List<String>,
     onSelectChanged: (String)-> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedValue by remember { mutableStateOf("") }
-    
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
@@ -41,7 +41,7 @@ fun FlavorScreen(
             modifier = modifier.padding(8.dp)
         ) {
             options.forEach {
-                item ->
+                    item ->
                 Row (
                     modifier = Modifier.selectable(
                         selected = selectedValue == item,
@@ -81,16 +81,15 @@ fun FlavorScreen(
         ){
             OutlinedButton(
                 modifier = Modifier.weight(1f),
-                onClick = {  }
-            )
+                onClick = {  })
             {
                 Text(text = "Cancel")
             }
             Button(
                 modifier = Modifier.weight(1f),
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { onSelectChanged(selectedValue) }
-
+                onClick = { print( "Hello  " )
+                }
             ) {
                 Text( text = "Next" )
             }

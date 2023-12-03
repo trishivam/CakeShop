@@ -70,13 +70,12 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
                     onSelectChanged = { orderViewModel.setFlavor(it) }
                 )
             }
-
             // navigate to Pickup scree
             composable(
                 route = Routes.Pickup.name
             ) {
                 val context = LocalContext.current
-                FlavorScreen(
+                PickupScreen(
                     subTotal = orderViewModel.uiState.value.price,
                     options = orderViewModel.uiState.value.pickupOptions,
                     onSelectChanged = { orderViewModel.setDate(it) }
