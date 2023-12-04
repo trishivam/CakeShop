@@ -20,9 +20,6 @@ import com.example.cakeshop.R
 @Composable
 fun StartScreen(
     onButtonClicked: (Int) -> Unit,
-//    onNextButtonClicked: (Int) -> Unit,
-//    quantityOptions: List<Pair<Int, Int>>
-
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

@@ -28,7 +28,6 @@ import com.example.cakeshop.R
 fun FlavorScreen(
     subTotal: String,
     options: List<String>,
-    onSelectionChanged: (String) -> Unit = {},
     onNextButtonClicked: (String) -> Unit,
     onCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier

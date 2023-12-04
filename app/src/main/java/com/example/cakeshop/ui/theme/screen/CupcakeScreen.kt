@@ -66,9 +66,11 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
                 FlavorScreen(
                     subTotal = orderViewModel.uiState.value.price,
                     options = DataSource.flavors.map { id -> context.resources.getString(id) },
-                    onNextButtonClicked = { navController.navigate(route = Routes.Pickup.name) },
-                    onSelectionChanged = { orderViewModel.setFlavor(it) },
-                    onCancelButtonClicked = { navController.navigate(route = Routes.Start.name) }
+                    onNextButtonClicked = {
+                        orderViewModel.setFlavor(it)
+                        navController.navigate(route = Routes.Pickup.name)
+                    },
+                    onCancelButtonClicked = { navController.popBackStack() }
                 )
             }
             // navigate to Pickup scree
@@ -79,18 +81,18 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
                     subTotal = orderViewModel.uiState.value.price,
                     options = orderViewModel.uiState.value.pickupOptions,
                     onNextButtonClicked = { navController.navigate( route = Routes.Summary.name ) },
-                    onCancelButtonClicked = { navController.navigate(route = Routes.Flavor.name)},
+                    onCancelButtonClicked = { navController.popBackStack() },
                     onSelectionChanged = { orderViewModel.setDate(it) }
                 )
             }
 
-            composable(
-                route = Routes.Summary.name
-            ){
-                OrderSummaryScreen(
-                    orderUiState = orderViewModel.uiState.value
-                )
-            }
+//            composable(
+//                route = Routes.Summary.name
+//            ){
+//                OrderSummaryScreen(
+//                    orderUiState = orderViewModel.uiState.value
+//                )
+//            }
         }
     }
 }

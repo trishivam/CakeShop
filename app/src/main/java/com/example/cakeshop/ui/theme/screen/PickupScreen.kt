@@ -28,7 +28,7 @@ fun PickupScreen(
     options: List<String>,
     onSelectionChanged: (String) -> Unit,
     onNextButtonClicked: () -> Unit,
-    OnCancelButtonClicked: () -> Unit,
+    onCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedValue by remember { mutableStateOf("") }
@@ -43,9 +43,9 @@ fun PickupScreen(
             options.forEach {
                     item ->
                 Row (
-                    modifier = Modifier.selectable()
+                    modifier = Modifier.selectable(
                         selected = selectedValue == item,
-                        onNextButtonClicked = {
+                        onClick = {
                             selectedValue = item
                             onSelectionChanged(item)
                         }
@@ -54,7 +54,7 @@ fun PickupScreen(
                 ) {
                     RadioButton(
                         selected = selectedValue == item,
-                        onNextButtonClicked = {
+                        onClick = {
                             selectedValue = item
                             onSelectionChanged(item)
                         }
@@ -80,18 +80,17 @@ fun PickupScreen(
                 .weight(1f, false),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.Bottom
-        ){
+        ) {
             OutlinedButton(
                 modifier = Modifier.weight(1f),
-                onClick = { OnCancelButtonClicked })
+                onClick = { onCancelButtonClicked() })
             {
                 Text(text = "Cancel")
             }
             Button(
                 modifier = Modifier.weight(1f),
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { onNextButtonClicked(selectedValue)
-                }
+                onClick = { onNextButtonClicked() }
             ) {
                 Text( text = "Next" )
             }
