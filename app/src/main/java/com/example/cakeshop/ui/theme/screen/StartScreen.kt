@@ -15,13 +15,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
 import com.example.cakeshop.R
 
 @Composable
 fun StartScreen(
     onButtonClicked: (Int) -> Unit,
+//    onNextButtonClicked: (Int) -> Unit,
+//    quantityOptions: List<Pair<Int, Int>>
+
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

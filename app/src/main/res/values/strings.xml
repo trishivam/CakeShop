@@ -19,5 +19,7 @@
     <string name="date">Date</string>
     <string name="six_cupcake">Six Cupcake</string>
     <string name="twelve_cupcake">Twelve Cupcake</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
     <plurals name="cupcake">""</plurals>
 </resources>

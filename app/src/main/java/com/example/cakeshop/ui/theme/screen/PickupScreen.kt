@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -27,7 +26,9 @@ import com.example.cakeshop.R
 fun PickupScreen(
     subTotal: String,
     options: List<String>,
-    onSelectChanged: (String) -> Unit,
+    onSelectionChanged: (String) -> Unit,
+    onNextButtonClicked: () -> Unit,
+    OnCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedValue by remember { mutableStateOf("") }
@@ -42,21 +43,22 @@ fun PickupScreen(
             options.forEach {
                     item ->
                 Row (
-                    modifier = Modifier.selectable(
+                    modifier = Modifier.selectable()
                         selected = selectedValue == item,
-                        onClick = {
+                        onNextButtonClicked = {
                             selectedValue = item
-                            onSelectChanged(item)
+                            onSelectionChanged(item)
                         }
                     ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = selectedValue == item,
-                        onClick = {
+                        onNextButtonClicked = {
                             selectedValue = item
-                            onSelectChanged(item)
-                        })
+                            onSelectionChanged(item)
+                        }
+                    )
                     Text(item)
                 }
             }
@@ -81,14 +83,14 @@ fun PickupScreen(
         ){
             OutlinedButton(
                 modifier = Modifier.weight(1f),
-                onClick = {  })
+                onClick = { OnCancelButtonClicked })
             {
                 Text(text = "Cancel")
             }
             Button(
                 modifier = Modifier.weight(1f),
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { print( "Hello  " )
+                onClick = { onNextButtonClicked(selectedValue)
                 }
             ) {
                 Text( text = "Next" )
