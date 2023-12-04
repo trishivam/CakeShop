@@ -72,28 +72,30 @@ fun PickupScreen(
                     .padding(8.dp)
                     .align(Alignment.End)
             )
-        }
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .weight(1f, false),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.Bottom
-        ) {
-            OutlinedButton(
-                modifier = Modifier.weight(1f),
-                onClick = { onCancelButtonClicked() })
-            {
-                Text(text = "Cancel")
-            }
-            Button(
-                modifier = Modifier.weight(1f),
-                enabled = selectedValue.isNotEmpty(),
-                onClick = { onNextButtonClicked() }
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .weight(1f, false),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.Bottom
             ) {
-                Text( text = "Next" )
+                OutlinedButton(
+                    modifier = Modifier.weight(1f),
+                    onClick = { onCancelButtonClicked() })
+                {
+                    Text(text = "Cancel")
+                }
+                Button(
+                    modifier = Modifier.weight(1f),
+                    enabled = selectedValue.isNotEmpty(),
+                    onClick = { onNextButtonClicked() }
+                ) {
+                    Text( text = "Next" )
+                }
             }
         }
+
     }
 }

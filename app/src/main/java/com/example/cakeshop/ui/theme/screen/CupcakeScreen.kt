@@ -1,6 +1,7 @@
 package com.example.cakeshop.ui.theme.screen
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +49,7 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
             startDestination = Routes.Start.name,
             modifier = Modifier.padding(it)
         ) {
+            // Start Screen
             composable(
                 route = Routes.Start.name
             ) {
@@ -82,17 +84,22 @@ fun CupcakeScreen(orderViewModel: OrderViewModel = viewModel()) {
                     options = orderViewModel.uiState.value.pickupOptions,
                     onNextButtonClicked = { navController.navigate( route = Routes.Summary.name ) },
                     onCancelButtonClicked = { navController.popBackStack() },
-                    onSelectionChanged = { orderViewModel.setDate(it) }
+                    onSelectionChanged = { orderViewModel.setDate(it) },
+                    modifier = Modifier.fillMaxHeight()
                 )
             }
 
-//            composable(
-//                route = Routes.Summary.name
-//            ){
-//                OrderSummaryScreen(
-//                    orderUiState = orderViewModel.uiState.value
-//                )
-//            }
+            composable(
+                route = Routes.Summary.name
+            ){
+                val context = LocalContext.current
+                OrderSummaryScreen(
+                    orderUiState = orderViewModel.uiState.value,
+                    onCancelButtonClicked = {},
+                    onSendButtonClicked = { subject: String, summary: String -> },
+                    modifier = Modifier.fillMaxHeight()
+                )
+            }
         }
     }
 }
